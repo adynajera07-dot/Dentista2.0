@@ -1,0 +1,2685 @@
+:root {
+  --ink: #202b45;
+  --muted: #98a6b9;
+  --line: #e9edf3;
+  --teal: #1FA7A0;
+  --green: #1FA7A0;
+  --bg: #f8f9fb;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.45 Inter, Arial, sans-serif;
+  overflow-x: hidden;
+}
+
+body.modal-open {
+  overflow: hidden;
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 235px;
+  background: #fff;
+  border-right: 1px solid var(--line);
+  padding: 21px;
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.brand {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font: 800 18px "Nunito Sans", sans-serif;
+  margin: 0 3px 36px;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  width: 31px;
+  height: 31px;
+  border-radius: 7px;
+  background: #1FA7A0;
+  color: #fff;
+}
+
+.navigation {
+  display: grid;
+  gap: 10px;
+}
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #718098;
+  padding: 10px 12px;
+  border-radius: 11px;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.nav-item i {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  background: #fff;
+  color: #1FA7A0;
+  font-style: normal;
+  box-shadow: 0 2px 9px #e9edf4;
+}
+
+.nav-item.active {
+  font-weight: 700;
+  color: var(--ink);
+  box-shadow: 0 4px 14px #edf0f5;
+}
+
+.nav-item.active i {
+  background: #1FA7A0;
+  color: #fff;
+}
+
+.nav-item b {
+  margin-left: auto;
+  border-radius: 9px;
+  padding: 3px 5px;
+  background: #E7F7F5;
+  color: #1FA7A0;
+  font-size: 8px;
+}
+
+.sidebar-footer {
+  margin-top: auto;
+}
+
+.help-card {
+  padding: 15px;
+  border-radius: 13px;
+  background: #1FA7A0;
+  color: #fff;
+  margin-bottom: 18px;
+}
+
+.help-bubble {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #fff;
+  color: #1FA7A0;
+  font-weight: 800;
+}
+
+.help-card strong {
+  display: block;
+  font-size: 13px;
+  margin: 9px 0 3px;
+}
+
+.help-card p {
+  font-size: 11px;
+  margin: 0 0 12px;
+}
+
+.help-card a {
+  display: block;
+  padding: 9px;
+  border-radius: 8px;
+  background: #fff;
+  text-align: center;
+  color: var(--ink);
+  font-size: 10px;
+  font-weight: 800;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-top: 1px solid var(--line);
+  padding: 14px 2px 0;
+}
+
+.profile-avatar,
+.person-avatar {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  color: #fff;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.profile-avatar {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  background: #796bc5;
+}
+
+.profile strong,
+.profile small {
+  display: block;
+}
+
+.profile strong {
+  font-size: 11px;
+}
+
+.profile small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.logout-button {
+  border: 0;
+  background: transparent;
+  color: #748198;
+  font-size: 20px;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CONTENIDO PRINCIPAL
+   ========================================================= */
+
+main {
+  margin-left: 235px;
+  padding: 25px 30px 40px;
+  max-width: 1600px;
+  width: calc(100% - 235px);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 28px;
+}
+
+.topbar p {
+  margin: 0 0 3px;
+  color: #a7b1c0;
+  font-size: 12px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font: 800 26px "Nunito Sans", sans-serif;
+  line-height: 1.2;
+}
+
+.top-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  width: 250px;
+  border: 1px solid #e1e6ee;
+  border-radius: 19px;
+  background: #fff;
+  padding: 0 12px;
+  color: #77849a;
+}
+
+.search span {
+  font-size: 20px;
+}
+
+.search input {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  padding: 10px 6px;
+  font-size: 13px;
+}
+
+.new-button {
+  border: 0;
+  border-radius: 8px;
+  background: #1FA7A0;
+  color: #fff;
+  padding: 11px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.app-page {
+  display: none;
+}
+
+.app-page.active {
+  display: block;
+}
+
+
+/* =========================================================
+   ESTADÍSTICAS
+   ========================================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 22px;
+}
+
+.stat-card,
+.card {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(33, 48, 81, 0.03);
+}
+
+.stat-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 108px;
+  padding: 20px 22px;
+}
+
+.stat-card p,
+.card-head p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.stat-card strong {
+  display: block;
+  font: 800 27px "Nunito Sans", sans-serif;
+  line-height: 1.15;
+}
+
+.stat-card small {
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.green-text {
+  color: var(--green) !important;
+}
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 21px;
+  flex-shrink: 0;
+}
+
+.money {
+  background: #1FA7A0;
+}
+
+.check {
+  background: #1FA7A0;
+}
+
+
+/* =========================================================
+   TARJETAS GENERALES
+   ========================================================= */
+
+.card {
+  padding: 20px 20px 18px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.card-head h2,
+.admin-header h2,
+.module-placeholder h2 {
+  margin: 0 0 4px;
+  font: 800 18px "Nunito Sans", sans-serif;
+  line-height: 1.3;
+}
+
+.outline-button,
+.view-link {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1FA7A0;
+}
+
+.outline-button {
+  border: 1px solid #D6F1EF;
+  border-radius: 7px;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   GRID DE CITAS
+   ========================================================= */
+
+.appointment-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 0.75fr;
+  gap: 18px;
+}
+
+.today-table-head,
+.appointment-card .appointment-row {
+  display: grid;
+  grid-template-columns: 68px minmax(120px, 1.5fr) 74px 100px 80px;
+  gap: 6px;
+  align-items: center;
+}
+
+.today-table-head {
+  margin-top: 16px;
+  padding: 0 2px 10px;
+  color: #a3afbd;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.appointment-list,
+.tomorrow-list {
+  max-height: 350px;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tomorrow-list {
+  max-height: 390px;
+}
+
+.appointment-card .appointment-row {
+  border-top: 1px solid var(--line);
+  padding: 10px 2px;
+}
+
+.time {
+  font-size: 13px;
+  font-weight: 700;
+  color: #60708b;
+  white-space: nowrap;
+}
+
+.time small,
+.person small {
+  display: block;
+  color: #a9b4c3;
+  font-size: 11px;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+.person small {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.person {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+}
+
+.person-avatar {
+  width: 31px;
+  height: 31px;
+  border-radius: 8px;
+}
+
+.avatar-purple {
+  background: #ebe8f9;
+  color: #61539f;
+}
+
+.avatar-blue {
+  background: #E7F7F5;
+  color: #1FA7A0;
+}
+
+.avatar-orange {
+  background: #fff0e2;
+  color: #c97736;
+}
+
+.avatar-green {
+  background: #E7F7F5;
+  color: #1FA7A0;
+}
+
+.person strong {
+  display: block;
+  font-size: 13px;
+  line-height: 1.25;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.charge {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.charge button {
+  display: block;
+  border: 0;
+  background: transparent;
+  padding: 1px 0;
+  color: #1FA7A0;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.status-dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  align-items: center;
+}
+
+.status-dot {
+  width: 13px;
+  height: 13px;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 0 3px transparent;
+}
+
+.pending {
+  background: #ffbc65;
+}
+
+.confirmed {
+  background: #1FA7A0;
+}
+
+.postponed {
+  background: #ff2828;
+}
+
+.status-dot.selected {
+  box-shadow: 0 0 0 3px #D6F1EF;
+}
+
+.status-text {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  text-align: center;
+  color: #8290a5;
+}
+
+.new-followup {
+  border: 1px solid #D6F1EF;
+  border-radius: 6px;
+  background: #F4FBFA;
+  color: #1FA7A0;
+  padding: 8px 7px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   CITAS DE MAÑANA
+   ========================================================= */
+
+.tomorrow-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 76px;
+  gap: 8px;
+  align-items: center;
+  padding: 12px 2px;
+  border-bottom: 1px solid var(--line);
+}
+
+.tomorrow-point {
+  display: none;
+}
+
+.tomorrow-row:not(:last-child)::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 18px;
+  height: 14px;
+  border-left: 1px solid #dce6e8;
+}
+
+.tomorrow-row strong,
+.tomorrow-row small {
+  display: block;
+}
+
+.tomorrow-row strong {
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.tomorrow-row small {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 2px;
+  line-height: 1.4;
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #D6F1EF;
+  border-radius: 8px;
+  background: linear-gradient(
+    180deg,
+    #F4FBFA 0%,
+    #EAF8F6 100%
+  );
+  color: #1FA7A0;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(35, 188, 177, 0.12);
+}
+
+
+/* =========================================================
+   CALENDARIO DEL DASHBOARD
+   ========================================================= */
+
+.dashboard-calendar {
+  margin-top: 22px;
+  overflow: hidden;
+}
+
+.week-head,
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.week-head {
+  margin-top: 17px;
+  color: #a6b0c0;
+  font-size: 11px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.calendar-grid {
+  margin-top: 8px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+  min-width: 0;
+}
+
+.day {
+  min-width: 0;
+  height: 84px;
+  padding: 6px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: #9da8b8;
+  font-size: 12px;
+  overflow: hidden;
+}
+
+.day.muted {
+  background: #fcfcfd;
+  color: #d1d7df;
+}
+
+.day.today {
+  background: #EAF8F6;
+  color: #1FA7A0;
+  font-weight: 800;
+}
+
+.event {
+  display: block;
+  margin-top: 5px;
+  padding: 4px 5px;
+  border-radius: 4px;
+  background: #E7F7F5;
+  color: #1FA7A0;
+  font-size: 10px;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event.violet {
+  background: #efedfc;
+  color: #7665c6;
+}
+
+.large .day {
+  height: 115px;
+}
+
+
+/* =========================================================
+   CALENDARIO COMPLETO
+   ========================================================= */
+
+.full-calendar-card {
+  min-height: 620px;
+  overflow: hidden;
+}
+
+.full-calendar-card .calendar-grid {
+  width: 100%;
+}
+
+.calendar-controls {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.calendar-controls button,
+.filter,
+.period {
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
+  padding: 6px;
+  color: #708097;
+  cursor: pointer;
+}
+
+.calendar-controls button {
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.filter-row {
+  display: flex;
+  gap: 8px;
+  margin: 18px 0;
+  flex-wrap: wrap;
+}
+
+.active-filter {
+  background: #E7F7F5;
+  color: #1FA7A0;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   LISTA GENERAL DE CITAS
+   ========================================================= */
+
+.expanded {
+  max-height: none;
+}
+
+.expanded .managed-appointment {
+  display: grid;
+  grid-template-columns: 112px minmax(180px, 1fr) 105px minmax(220px, auto);
+  align-items: center;
+  gap: 16px;
+  padding: 16px 8px;
+  border-top: 1px solid var(--line);
+}
+
+.managed-appointment-time strong,
+.managed-appointment-time small,
+.managed-appointment-person strong,
+.managed-appointment-person small {
+  display: block;
+}
+
+.managed-appointment-time strong,
+.managed-appointment-person strong {
+  color: var(--ink);
+  font-size: 14px;
+}
+
+.managed-appointment-time small,
+.managed-appointment-person small,
+.managed-appointment-charge span {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.managed-appointment-person {
+  min-width: 0;
+}
+
+.managed-appointment-person strong,
+.managed-appointment-person small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.managed-appointment-charge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.managed-appointment-charge strong {
+  font-size: 14px;
+}
+
+.managed-appointment-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.patient-info-button {
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #fff;
+  color: #60708b;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.patient-info-button:hover,
+.row-action:hover {
+  filter: brightness(0.97);
+}
+
+.empty-state {
+  margin: 0;
+  padding: 24px 12px;
+  color: var(--muted);
+  text-align: center;
+  font-size: 13px;
+}
+
+.expanded .appointment-row {
+  grid-template-columns: 62px minmax(180px, 1.5fr) 92px 118px 100px;
+  padding: 13px 4px;
+}
+
+
+/* =========================================================
+   DIRECTORIO DE PACIENTES
+   ========================================================= */
+
+.patient-directory {
+  min-height: 500px;
+}
+
+.patient-directory-head {
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.patient-directory-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: min(340px, 100%);
+  padding: 0 12px;
+  border: 1px solid #e1e6ee;
+  border-radius: 9px;
+  color: #77849a;
+}
+
+.patient-directory-search input {
+  width: 100%;
+  padding: 10px 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+}
+
+.patient-directory-layout {
+  display: grid;
+  grid-template-columns: minmax(250px, 0.85fr) minmax(0, 1.4fr);
+  min-height: 380px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.patient-list {
+  max-height: 560px;
+  overflow: auto;
+  border-right: 1px solid var(--line);
+  -webkit-overflow-scrolling: touch;
+}
+
+.patient-list-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 11px;
+  padding: 13px 14px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
+.patient-list-item:hover,
+.patient-list-item.selected {
+  background: #EAF8F6;
+}
+
+.patient-list-avatar,
+.patient-details-avatar {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #E7F7F5;
+  color: #1FA7A0;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.patient-list-copy {
+  min-width: 0;
+}
+
+.patient-list-copy strong,
+.patient-list-copy small {
+  display: block;
+}
+
+.patient-list-copy strong {
+  overflow: hidden;
+  font-size: 13px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.patient-list-copy small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.patient-list-arrow {
+  margin-left: auto;
+  color: var(--muted);
+  font-size: 21px;
+}
+
+
+/* =========================================================
+   DETALLES DEL PACIENTE
+   ========================================================= */
+
+.patient-details {
+  padding: 24px;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.patient-details > .large-module-icon {
+  margin: 40px auto 14px;
+}
+
+.patient-details > h2,
+.patient-details > p {
+  text-align: center;
+}
+
+.patient-details > p {
+  color: var(--muted);
+}
+
+.patient-details-heading {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+}
+
+.patient-details-heading h2 {
+  margin: 2px 0 0;
+  font: 800 20px "Nunito Sans", sans-serif;
+}
+
+.patient-details-avatar {
+  width: 52px;
+  height: 52px;
+  font-size: 15px;
+}
+
+.patient-detail-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  margin: 24px 0;
+}
+
+.patient-detail-stats > div {
+  padding: 14px;
+  border-radius: 9px;
+  background: #f7f9fb;
+}
+
+.patient-detail-stats span,
+.patient-detail-stats strong {
+  display: block;
+}
+
+.patient-detail-stats span {
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.patient-detail-stats strong {
+  margin-top: 5px;
+  font-size: 17px;
+}
+
+.patient-details h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+}
+
+.patient-appointment-history > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+
+.patient-appointment-history span strong,
+.patient-appointment-history span small {
+  display: block;
+}
+
+.patient-appointment-history span small {
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+
+/* =========================================================
+   PLACEHOLDER DE MÓDULOS
+   ========================================================= */
+
+.module-placeholder {
+  display: flex;
+  min-height: 480px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.module-placeholder p {
+  max-width: 360px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.large-module-icon {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  background: #E7F7F5;
+  color: #1FA7A0;
+  font-size: 27px;
+}
+
+
+/* =========================================================
+   ADMINISTRACIÓN
+   ========================================================= */
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.eyebrow {
+  margin: 0 0 5px;
+  color: #1FA7A0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.9px;
+}
+
+.users-card {
+  overflow: hidden;
+}
+
+.users-card > table {
+  width: 100%;
+  min-width: 680px;
+  border-collapse: collapse;
+}
+
+.users-card th {
+  text-align: left;
+  padding: 0 0 11px;
+  color: #a4afbf;
+  font-size: 10px;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.users-card td {
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+  color: #78859a;
+  font-size: 12px;
+}
+
+.role,
+.access {
+  border-radius: 10px;
+  padding: 4px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.role.admin {
+  background: #e9e7fb;
+  color: #6b5dc0;
+}
+
+.role.doctor {
+  background: #E7F7F5;
+  color: #1FA7A0;
+}
+
+.role.reception {
+  background: #E7F7F5;
+  color: #1FA7A0;
+}
+
+.access.enabled {
+  background: #E7F7F5;
+  color: #1FA7A0;
+}
+
+.row-action {
+  border: 0;
+  border-radius: 6px;
+  background: #E7F7F5;
+  color: #1FA7A0;
+  padding: 6px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+
+/* =========================================================
+   MODALES GENERALES
+   ========================================================= */
+
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  z-index: 20;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  background: rgba(27, 37, 62, 0.38);
+  overscroll-behavior: contain;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.appointment-modal {
+  position: relative;
+  width: min(410px, 100%);
+  max-height: calc(100vh - 36px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  padding: 25px;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 0 18px 55px rgba(21, 32, 57, 0.24);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.appointment-modal h2 {
+  margin: 0;
+  font: 800 20px "Nunito Sans", sans-serif;
+}
+
+.modal-copy {
+  color: #8e9aae;
+  font-size: 12px;
+}
+
+.appointment-modal label {
+  display: block;
+  margin: 10px 0;
+  color: #617088;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.appointment-modal input,
+.appointment-modal select,
+.appointment-modal textarea {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding: 9px;
+  border: 1px solid #e0e6ed;
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ink);
+  outline: none;
+}
+
+.appointment-modal textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.amount-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.amount-row input[type="number"] {
+  flex: 1;
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  color: #617088;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.checkbox-row input {
+  width: auto;
+  margin: 0;
+}
+
+.appointment-modal .new-button {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 8px;
+  right: 14px;
+  border: 0;
+  background: transparent;
+  color: #8d98aa;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.toast {
+  position: fixed;
+  z-index: 30;
+  right: 25px;
+  bottom: 25px;
+  padding: 12px 16px;
+  border-radius: 9px;
+  background: #27334f;
+  color: #fff;
+  font-size: 11px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+  transition: 0.2s;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: none;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  main {
+    padding: 22px;
+  }
+
+  .appointment-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .expanded .managed-appointment {
+    grid-template-columns: 100px minmax(150px, 1fr) 90px auto;
+    gap: 12px;
+  }
+
+  .full-calendar-card .week-head,
+  .full-calendar-card .calendar-grid {
+    min-width: 650px;
+  }
+
+  .full-calendar-card {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .dashboard-calendar .week-head,
+  .dashboard-calendar .calendar-grid {
+    min-width: 560px;
+  }
+
+  .dashboard-calendar {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .users-card {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .users-card > table {
+    min-width: 680px;
+  }
+}
+
+
+/* =========================================================
+   TABLET PEQUEÑA
+   ========================================================= */
+
+@media (max-width: 900px) {
+  main {
+    width: calc(100% - 235px);
+    padding: 20px;
+  }
+
+  .topbar {
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .top-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .search {
+    width: 210px;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .expanded .managed-appointment {
+    grid-template-columns: 90px minmax(0, 1fr) 90px;
+    gap: 12px;
+  }
+
+  .managed-appointment-actions {
+    grid-column: 1 / -1;
+    justify-content: flex-start;
+  }
+
+  .patient-directory-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+  }
+
+  .full-calendar-card .week-head,
+  .full-calendar-card .calendar-grid {
+    min-width: 680px;
+  }
+
+  .large .day {
+    height: 105px;
+  }
+}
+
+
+/* =========================================================
+   MÓVIL
+   ========================================================= */
+
+@media (max-width: 760px) {
+  .sidebar {
+    display: none;
+  }
+
+  main {
+    margin: 0;
+    width: 100%;
+    max-width: none;
+    padding: 16px 12px 30px;
+  }
+
+  .topbar {
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 20px;
+    gap: 14px;
+  }
+
+  .topbar h1 {
+    font-size: 22px;
+  }
+
+  .top-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+
+  .top-actions .new-button {
+    min-height: 42px;
+    padding: 10px 12px;
+  }
+
+  .search {
+    display: none;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .stat-card {
+    min-height: 76px;
+    padding: 14px;
+  }
+
+  .stat-card strong {
+    font-size: 23px;
+  }
+
+  .stat-icon {
+    width: 42px;
+    height: 42px;
+  }
+
+  .card {
+    padding: 15px;
+    border-radius: 12px;
+  }
+
+  .card-head {
+    align-items: center;
+  }
+
+  .card-head h2 {
+    font-size: 16px;
+  }
+
+  .card-head p {
+    font-size: 11px;
+  }
+
+
+  /* =======================================================
+     CITAS DEL CENTRO DE MANDO
+     ======================================================= */
+
+  .appointment-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .today-table-head {
+    display: none;
+  }
+
+  .appointment-list,
+  .tomorrow-list {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .appointment-card .appointment-row {
+    grid-template-columns: 40px minmax(0, 1fr) auto;
+    gap: 8px;
+    padding: 12px 2px;
+    align-items: center;
+  }
+
+  .appointment-card .person {
+    min-width: 0;
+  }
+
+  .appointment-card .person-avatar {
+    width: 32px;
+    height: 32px;
+  }
+
+  .appointment-card .person strong {
+    font-size: 12px;
+  }
+
+  .appointment-card .person small {
+    font-size: 10px;
+  }
+
+  .appointment-card .charge {
+    grid-column: 3;
+    grid-row: 1;
+    font-size: 12px;
+  }
+
+  .appointment-card .status-dots {
+    grid-column: 2;
+    grid-row: 2;
+    justify-content: flex-start;
+    margin-top: 2px;
+  }
+
+  .appointment-card .new-followup {
+    grid-column: 3;
+    grid-row: 2;
+    padding: 7px 6px;
+  }
+
+  .appointment-card .status-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* =======================================================
+     CITAS DE MAÑANA
+     ======================================================= */
+
+  .tomorrow-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px;
+    padding: 12px 2px;
+  }
+
+  .tomorrow-row strong {
+    font-size: 12px;
+  }
+
+  .tomorrow-row small {
+    font-size: 10px;
+  }
+
+  .whatsapp {
+    width: 38px;
+    height: 38px;
+  }
+
+
+  /* =======================================================
+     CALENDARIO
+     ======================================================= */
+
+  .dashboard-calendar,
+  .full-calendar-card {
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .dashboard-calendar .week-head,
+  .dashboard-calendar .calendar-grid {
+    min-width: 560px;
+  }
+
+  .full-calendar-card .week-head,
+  .full-calendar-card .calendar-grid {
+    min-width: 680px;
+  }
+
+  .week-head {
+    margin-top: 14px;
+    font-size: 10px;
+  }
+
+  .calendar-grid {
+    margin-top: 6px;
+  }
+
+  .day {
+    height: 82px;
+    padding: 6px;
+    font-size: 11px;
+  }
+
+  .large .day {
+    height: 100px;
+  }
+
+  .event {
+    margin-top: 4px;
+    padding: 4px;
+    font-size: 9px;
+  }
+
+  .calendar-controls {
+    gap: 6px;
+  }
+
+  .calendar-controls strong {
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .calendar-controls button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    flex-shrink: 0;
+  }
+
+  .full-calendar-card {
+    min-height: auto;
+  }
+
+
+  /* =======================================================
+     LISTA GENERAL DE CITAS
+     ======================================================= */
+
+  .filter-row {
+    margin: 14px 0;
+    gap: 6px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    padding-bottom: 3px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter {
+    min-height: 36px;
+    padding: 8px 11px;
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  .expanded {
+    max-height: none;
+    overflow: visible;
+  }
+
+  .expanded .managed-appointment {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 10px 12px;
+    padding: 15px 4px;
+  }
+
+  .managed-appointment-person {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .managed-appointment-person strong {
+    font-size: 13px;
+  }
+
+  .managed-appointment-person small {
+    font-size: 10px;
+  }
+
+  .managed-appointment-time {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .managed-appointment-time strong {
+    font-size: 12px;
+  }
+
+  .managed-appointment-time small {
+    font-size: 10px;
+  }
+
+  .managed-appointment-charge {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 72px;
+  }
+
+  .managed-appointment-charge strong {
+    font-size: 13px;
+  }
+
+  .managed-appointment-charge span {
+    font-size: 10px;
+  }
+
+  .managed-appointment-actions {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    justify-content: flex-start;
+    padding-top: 3px;
+  }
+
+  .managed-appointment-actions button {
+    min-height: 34px;
+  }
+
+  .patient-info-button,
+  .row-action {
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .managed-appointment .status-dots {
+    justify-content: flex-start;
+    margin-top: 4px;
+  }
+
+  .managed-appointment .status-dot {
+    width: 14px;
+    height: 14px;
+  }
+
+
+  /* =======================================================
+     PACIENTES
+     ======================================================= */
+
+  .patient-directory {
+    min-height: 0;
+  }
+
+  .patient-directory-head {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .patient-directory-search {
+    width: 100%;
+  }
+
+  .patient-directory-search input {
+    min-height: 38px;
+  }
+
+  .patient-directory-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .patient-list {
+    max-height: 280px;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .patient-list-item {
+    min-height: 56px;
+    padding: 11px 12px;
+  }
+
+  .patient-details {
+    padding: 18px 12px;
+  }
+
+  .patient-details-heading {
+    align-items: flex-start;
+  }
+
+  .patient-details-heading h2 {
+    font-size: 18px;
+  }
+
+  .patient-detail-stats {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 18px 0;
+  }
+
+  .patient-detail-stats > div {
+    padding: 11px;
+  }
+
+  .patient-detail-stats strong {
+    font-size: 15px;
+  }
+
+
+  /* =======================================================
+     ADMINISTRACIÓN
+     ======================================================= */
+
+  .admin-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .admin-header h2 {
+    font-size: 18px;
+  }
+
+  .users-card {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .users-card > table {
+    width: max-content;
+    min-width: 720px;
+  }
+
+  .users-card th {
+    padding: 0 14px 11px 0;
+    font-size: 9px;
+  }
+
+  .users-card td {
+    padding: 12px 14px 12px 0;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+
+  .users-card th:first-child,
+  .users-card td:first-child {
+    padding-left: 2px;
+  }
+
+
+  /* =======================================================
+     MODALES GENERALES
+     ======================================================= */
+
+  .modal-backdrop {
+    padding: 10px;
+    align-items: flex-end;
+  }
+
+  .appointment-modal {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 20px);
+    padding: 21px 17px;
+    border-radius: 15px 15px 10px 10px;
+  }
+
+  .appointment-modal h2 {
+    font-size: 18px;
+    padding-right: 25px;
+  }
+
+  .appointment-modal input,
+  .appointment-modal select,
+  .appointment-modal textarea {
+    min-height: 40px;
+    font-size: 14px;
+  }
+
+  .appointment-modal textarea {
+    min-height: 90px;
+  }
+
+  .appointment-modal .new-button {
+    min-height: 42px;
+  }
+
+  .modal-close {
+    top: 7px;
+    right: 11px;
+  }
+
+
+  /* =======================================================
+     GENERAL
+     ======================================================= */
+
+  .module-placeholder {
+    min-height: 350px;
+    padding: 25px 10px;
+  }
+
+  .toast {
+    right: 12px;
+    left: 12px;
+    bottom: 12px;
+    text-align: center;
+  }
+}
+
+
+/* =========================================================
+   MÓVILES MUY PEQUEÑOS
+   ========================================================= */
+
+@media (max-width: 420px) {
+  main {
+    padding: 13px 9px 25px;
+  }
+
+  .topbar h1 {
+    font-size: 20px;
+  }
+
+  .top-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .top-actions .new-button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 13px;
+  }
+
+  .card-head {
+    gap: 8px;
+  }
+
+  .card-head h2 {
+    font-size: 15px;
+  }
+
+  .outline-button {
+    padding: 7px 8px;
+    font-size: 10px;
+  }
+
+  .appointment-card .appointment-row {
+    grid-template-columns: 36px minmax(0, 1fr) auto;
+    gap: 6px;
+  }
+
+  .appointment-card .person-avatar {
+    width: 29px;
+    height: 29px;
+  }
+
+  .appointment-card .person strong {
+    font-size: 11px;
+  }
+
+  .appointment-card .person small {
+    font-size: 9px;
+  }
+
+  .appointment-card .charge {
+    font-size: 11px;
+  }
+
+  .new-followup {
+    font-size: 9px;
+    padding: 7px 5px;
+  }
+
+  .patient-detail-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .full-calendar-card .week-head,
+  .full-calendar-card .calendar-grid {
+    min-width: 640px;
+  }
+
+  .dashboard-calendar .week-head,
+  .dashboard-calendar .calendar-grid {
+    min-width: 540px;
+  }
+
+  .day {
+    height: 78px;
+  }
+
+  .large .day {
+    height: 94px;
+  }
+
+  .event {
+    font-size: 8px;
+  }
+
+  .expanded .managed-appointment {
+    padding: 13px 2px;
+  }
+
+  .managed-appointment-actions {
+    gap: 5px;
+  }
+
+  .patient-info-button,
+  .row-action {
+    padding: 7px 8px;
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================================
+   MEJORA DE SCROLL EN DISPOSITIVOS TÁCTILES
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+  .calendar-controls button,
+  .filter,
+  .patient-info-button,
+  .row-action,
+  .new-followup,
+  .new-button,
+  .whatsapp,
+  .status-dot {
+    touch-action: manipulation;
+  }
+
+  .calendar-controls button {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .status-dot {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+
+/* =========================================================
+   MODAL NUEVO PACIENTE
+   Mismo estilo visual que NUEVA CITA
+   ========================================================= */
+
+/*
+   IMPORTANTE:
+   Este modal controla su propio scroll.
+   El contenido que está detrás queda bloqueado.
+*/
+
+#patient-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  display: none;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: rgba(32, 43, 69, 0.42);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+
+  /*
+     Evita que el scroll se propague hacia
+     la aplicación que está detrás.
+  */
+  overscroll-behavior: contain;
+
+  /*
+     El propio backdrop no debe desplazarse.
+  */
+  overflow: hidden;
+
+  /*
+     Evita problemas de interacción táctil
+     con el contenido inferior.
+  */
+  touch-action: none;
+}
+
+#patient-modal.is-open,
+#patient-modal.active,
+#patient-modal[aria-hidden="false"] {
+  display: flex;
+}
+
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL DEL FORMULARIO
+   ========================================================= */
+
+#patient-modal .modal,
+#patient-modal .modal-card,
+#patient-modal .modal-content {
+  position: relative;
+
+  width: min(920px, 100%);
+  max-height: calc(100vh - 48px);
+
+  /*
+     EL SCROLL PRINCIPAL DEL FORMULARIO
+  */
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  /*
+     Impide que al llegar arriba/abajo
+     el navegador continúe desplazando
+     la aplicación de fondo.
+  */
+  overscroll-behavior: contain;
+
+  /*
+     Scroll suave en dispositivos táctiles.
+  */
+  -webkit-overflow-scrolling: touch;
+
+  /*
+     Permite interacción táctil vertical
+     dentro del formulario.
+  */
+  touch-action: pan-y;
+
+  background: #ffffff !important;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+
+  box-shadow:
+    0 24px 60px rgba(32, 43, 69, 0.18),
+    0 8px 24px rgba(32, 43, 69, 0.08);
+
+  padding: 0;
+
+  /*
+     Hace que el scrollbar pertenezca
+     visualmente al modal.
+  */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5df transparent;
+}
+
+
+/* =========================================================
+   ENCABEZADO
+   ========================================================= */
+
+#patient-modal .patient-modal-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 20px;
+
+  padding: 24px 28px 20px;
+
+  background: var(--teal) !important;
+  color: #ffffff;
+  border: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+#patient-modal .patient-modal-header .patient-modal-heading {
+  min-width: 0;
+}
+
+#patient-modal .patient-modal-header .eyebrow {
+  margin: 0 0 5px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+#patient-modal .patient-modal-header h2,
+#patient-modal .patient-modal-header h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+#patient-modal .patient-modal-header p,
+#patient-modal .patient-modal-header .modal-copy {
+  margin: 6px 0 0;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+
+/* =========================================================
+   BOTÓN CERRAR
+   ========================================================= */
+
+#patient-modal .modal-close,
+#patient-modal #patient-modal-close {
+  width: 38px;
+  height: 38px;
+  flex: 0 0 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #ffffff;
+  color: var(--muted);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#patient-modal .modal-close:hover,
+#patient-modal #patient-modal-close:hover {
+  background: var(--bg);
+  color: var(--ink);
+  border-color: #d9e0e9;
+}
+
+/* Botón cerrar dentro del encabezado verde azulado */
+#patient-modal .patient-modal-header .modal-close,
+#patient-modal .patient-modal-header #patient-modal-close {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+}
+
+#patient-modal .patient-modal-header .modal-close:hover,
+#patient-modal .patient-modal-header #patient-modal-close:hover {
+  background: rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.48);
+}
+
+
+/* =========================================================
+   CUERPO DEL FORMULARIO
+   ========================================================= */
+
+#patient-modal .modal-body,
+#patient-modal .modal-form,
+#patient-modal form {
+  background: #ffffff !important;
+  border-radius: 15px;
+
+}
+
+#patient-modal form {
+  padding: 26px 28px 28px;
+}
+
+
+/* =========================================================
+   SECCIONES DEL FORMULARIO
+   ========================================================= */
+
+#patient-modal .form-section,
+#patient-modal .patient-section {
+  margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+#patient-modal .form-section:last-child,
+#patient-modal .patient-section:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+#patient-modal .form-section-title,
+#patient-modal .section-title {
+  margin: 0 0 16px;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+
+/* =========================================================
+   CAMPOS
+   ========================================================= */
+
+#patient-modal label {
+  display: block;
+  margin-bottom: 7px;
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+#patient-modal input,
+#patient-modal select,
+#patient-modal textarea {
+  width: 100%;
+  min-height: 44px;
+
+  padding: 11px 13px;
+
+  border: 1px solid var(--line);
+  border-radius: 10px;
+
+  background: #ffffff !important;
+  color: var(--ink);
+
+  font-family: inherit;
+  font-size: 14px;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#patient-modal textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+#patient-modal input:focus,
+#patient-modal select:focus,
+#patient-modal textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(53, 197, 185, 0.12);
+}
+
+#patient-modal input::placeholder,
+#patient-modal textarea::placeholder {
+  color: #b1bac7;
+}
+
+
+/* =========================================================
+   GRID DE CAMPOS
+   ========================================================= */
+
+#patient-modal .form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#patient-modal .form-group {
+  min-width: 0;
+}
+
+#patient-modal .form-group.full,
+#patient-modal .full-width {
+  grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   PIE DEL FORMULARIO / BOTONES
+   ========================================================= */
+
+#patient-modal .modal-footer,
+#patient-modal .form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+
+  padding: 20px 28px 24px;
+
+  background: #ffffff !important;
+  border-top: 1px solid var(--line);
+}
+
+#patient-modal button {
+  font-family: inherit;
+}
+
+#patient-modal .btn,
+#patient-modal button[type="submit"],
+#patient-modal #patient-cancel {
+  min-height: 42px;
+  padding: 10px 18px;
+
+  border-radius: 10px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+
+
+/* =========================================================
+   BOTÓN CANCELAR
+   ========================================================= */
+
+#patient-modal #patient-cancel {
+  border: 1px solid var(--line);
+  background: #ffffff;
+  color: var(--ink);
+}
+
+#patient-modal #patient-cancel:hover {
+  background: var(--bg);
+}
+
+
+/* =========================================================
+   BOTÓN GUARDAR
+   ========================================================= */
+
+#patient-modal button[type="submit"] {
+  border: 1px solid var(--teal);
+  background: var(--teal);
+  color: #ffffff;
+}
+
+#patient-modal button[type="submit"]:hover {
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+}
+
+
+/* =========================================================
+   SCROLLBAR DEL MODAL NUEVO PACIENTE
+   ========================================================= */
+
+#patient-modal .modal::-webkit-scrollbar,
+#patient-modal .modal-card::-webkit-scrollbar,
+#patient-modal .modal-content::-webkit-scrollbar {
+  width: 8px;
+}
+
+#patient-modal .modal::-webkit-scrollbar-track,
+#patient-modal .modal-card::-webkit-scrollbar-track,
+#patient-modal .modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#patient-modal .modal::-webkit-scrollbar-thumb,
+#patient-modal .modal-card::-webkit-scrollbar-thumb,
+#patient-modal .modal-content::-webkit-scrollbar-thumb {
+  background: #cbd5df;
+  border-radius: 10px;
+}
+
+#patient-modal .modal::-webkit-scrollbar-thumb:hover,
+#patient-modal .modal-card::-webkit-scrollbar-thumb:hover,
+#patient-modal .modal-content::-webkit-scrollbar-thumb:hover {
+  background: #aeb9c7;
+}
+
+
+/* =========================================================
+   RESPONSIVE DEL MODAL NUEVO PACIENTE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  #patient-modal {
+    padding: 14px;
+  }
+
+  #patient-modal .modal,
+  #patient-modal .modal-card,
+  #patient-modal .modal-content {
+    width: 100%;
+    max-width: 100%;
+    max-height: calc(100vh - 28px);
+    border-radius: 16px;
+  }
+
+  #patient-modal .patient-modal-header {
+    padding: 20px;
+  }
+
+  #patient-modal form {
+    padding: 20px;
+  }
+
+  #patient-modal .form-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  #patient-modal .form-group.full,
+  #patient-modal .full-width {
+    grid-column: auto;
+  }
+
+  #patient-modal .modal-footer,
+  #patient-modal .form-actions {
+    padding: 16px 20px 20px;
+  }
+}
+
+
+@media (max-width: 420px) {
+
+  #patient-modal {
+    padding: 8px;
+  }
+
+  #patient-modal .modal,
+  #patient-modal .modal-card,
+  #patient-modal .modal-content {
+    width: 100%;
+    max-height: calc(100vh - 16px);
+    border-radius: 14px;
+  }
+
+  #patient-modal .patient-modal-header {
+    padding: 18px 16px;
+  }
+
+  #patient-modal .patient-modal-header h2,
+  #patient-modal .patient-modal-header h3 {
+    font-size: 19px;
+  }
+
+  #patient-modal form {
+    padding: 18px 16px;
+  }
+
+  #patient-modal .modal-footer,
+  #patient-modal .form-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    padding: 14px 16px 16px;
+  }
+
+  #patient-modal .modal-footer button,
+  #patient-modal .form-actions button {
+    width: 100%;
+  }
+}
+
+
+/* =========================================================
+   BLOQUEO EXTRA DEL CONTENIDO DE FONDO
+   ========================================================= */
+
+/*
+   Si el modal está abierto mediante aria-hidden,
+   evitamos interacción accidental con el contenido
+   que está detrás.
+*/
+
+body:has(#patient-modal.is-open),
+body:has(#patient-modal.active),
+body:has(#patient-modal[aria-hidden="false"]) {
+  overflow: hidden;
+  height: 100vh;
+  overscroll-behavior: none;
+}
+
+
+/* =========================================================
+   TOUCH / SCROLL DEL MODAL
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+  #patient-modal {
+    touch-action: none;
+  }
+
+  #patient-modal .modal,
+  #patient-modal .modal-card,
+  #patient-modal .modal-content {
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+  }
+}
+/* =========================================================
+   SCROLL INTERNO DEL FORMULARIO "NUEVO PACIENTE"
+   ========================================================= */
+
+#patient-modal .patient-form-scroll {
+  max-height: 55vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  padding-right: 8px;
+
+  /* Permite desplazamiento con mouse y touch */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5df transparent;
+}
+
+/* Chrome / Edge / Safari */
+#patient-modal .patient-form-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+#patient-modal .patient-form-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#patient-modal .patient-form-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5df;
+  border-radius: 10px;
+}
+
+#patient-modal .patient-form-scroll::-webkit-scrollbar-thumb:hover {
+  background: #aeb9c7;
+}
